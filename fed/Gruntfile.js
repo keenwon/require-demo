@@ -45,38 +45,6 @@ module.exports = function (grunt) {
             }
         },
 
-        copy: {
-            app: {
-                expand: true,
-                flatten: false,
-                src: ['js/require-config.js'],
-                dest: '<%= yeoman.dist %>/'
-            },
-            libs: {
-                expand: true,
-                flatten: false,
-                src: [
-                    'js/libs/almond/almond.js',
-                    'js/libs/requirejs/require.js'
-                ],
-                dest: '<%= yeoman.dist %>/'
-            }
-        },
-
-        uglify: {
-            app: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= yeoman.dist %>/',
-                        src: ['js/require-config.js'],
-                        dest: '<%= yeoman.dist %>/',
-                        ext: '.js'
-                    }
-                ]
-            }
-        },
-
         cssmin: {
             app: {
                 files: {
@@ -92,6 +60,7 @@ module.exports = function (grunt) {
             app: [
                 'dist/js/build.txt',
                 'dist/js/app/common',
+                'dist/js/require-config.js',
                 'dist/js/**/*.hbs'
             ]
         },
@@ -105,5 +74,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['fed']);
     grunt.registerTask('server', ['fed']);
-    grunt.registerTask('build', ['jshint', 'requirejs', 'copy', 'uglify', 'cssmin', 'clean']);
+    grunt.registerTask('build', ['jshint', 'requirejs', 'cssmin', 'clean']);
 };
