@@ -32,10 +32,10 @@
 <#macro footer>
     <#if ENV == 'development'>
         <script type="text/javascript" src="${libRoot}/requirejs/require.js?v=${version}"></script>
+        <script type="text/javascript" src="${jsRoot}/require-config.js?v=${version}"></script>
     <#else>
         <script type="text/javascript" src="${libRoot}/almond/almond.js?v=${version}"></script>
     </#if>
-    <script type="text/javascript" src="${jsRoot}/require-config.js?v=${version}"></script>
     <#nested>
 </body>
 </html>

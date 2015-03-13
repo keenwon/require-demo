@@ -4,7 +4,8 @@
 </@inc.header>
 
 <@inc.body 'home'>
-    <p>home</p>
+    <p><a href="/">home</a></p>
+    <p><a href="/list">list</a></p>
 </@inc.body>
 
 <@inc.footer>

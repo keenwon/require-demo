@@ -30,11 +30,15 @@ module.exports = function (grunt) {
                      * require-config.js 的baseUrl是根据当前url计算的，所以以'/'开头
                      * Gruntfile.js 的baseUrl是根据本地磁盘计算的
                      */
-                    baseUrl: '<%= yeoman.app %>',
-                    dir: '<%= yeoman.dist %>/js/app',
+                    appDir: 'js',
+                    baseUrl: 'app',
+                    dir: 'dist/js',
                     modules: [
                         {
                             name: 'home/main'
+                        },
+                        {
+                            name: 'list/main'
                         }
                     ]
                 }
@@ -43,17 +47,19 @@ module.exports = function (grunt) {
 
         copy: {
             app: {
-                files: [
-                    {
-                        expand: true,
-                        flatten: false,
-                        src: ['js/require-config.js'],
-                        dest: '<%= yeoman.dist %>/',
-                        rename: function () {
-                            return 'dist/js/require-config.js';
-                        }
-                    }
-                ]
+                expand: true,
+                flatten: false,
+                src: ['js/require-config.js'],
+                dest: '<%= yeoman.dist %>/'
+            },
+            libs: {
+                expand: true,
+                flatten: false,
+                src: [
+                    'js/libs/almond/almond.js',
+                    'js/libs/requirejs/require.js'
+                ],
+                dest: '<%= yeoman.dist %>/'
             }
         },
 
@@ -84,8 +90,9 @@ module.exports = function (grunt) {
 
         clean: {
             app: [
-                'dist/js/app/build.txt',
-                'dist/js/app/common'
+                'dist/js/build.txt',
+                'dist/js/app/common',
+                'dist/js/**/*.hbs'
             ]
         },
 
